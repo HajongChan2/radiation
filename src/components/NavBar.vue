@@ -17,6 +17,9 @@
               <li class="nav-item">
                 <a class="nav-link" @click.prevent="handleClick" href="#">세슘&삼중수소</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" @click.prevent="handleClick" href="#">실시간 댓글</a>
+              </li>
             </ul>
           </div>
         </div>
