@@ -1,0 +1,36 @@
+.bottom{
+    height: 50px;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right:0;
+    z-index: 1;
+    display: flex;
+}
+.bottom::before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color:#e9e9e9;
+    border-radius: 20px;
+    opacity: 0.6;
+}
+.content{
+    display: flex;
+    align-items: center;
+}
+.circle{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0EC33B;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.font{
+    margin:0;
+    font-size: 0.9em;
+}

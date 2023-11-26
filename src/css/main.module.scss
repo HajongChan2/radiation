@@ -1,0 +1,66 @@
+[class*='class']{
+    position:absolute;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+}
+[class*='class']::after{
+    content: "";
+    position:absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #e9e9e9;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+[class*='class'] > img{
+    text-align: center;
+}
+[class*='class'] > h2, h1{
+    margin:0;
+}
+.class1, .class10{ // 남해 동부
+    bottom: 35%;  
+    right:15%;
+}
+.class2, .class11{ // 남해 서부
+    bottom: 20%; 
+    left:20%;
+}
+.class3, .class12{ // 남해 중부
+    bottom: 25%; 
+    left: 45%;
+}
+.class4, .class13{ //동해 북부
+    top:5%;
+    right:25%;
+}
+.class5, .class14{ // 동해 중부
+    top:30%;
+    right:10%;
+}
+.class6, .class15{ // 서해 남부
+    bottom: 30%; 
+    left:8%;
+}
+.class7, .class16{ //서해 북부
+    top:10%;
+    left: 5%;
+}
+.class8, .class17{ // 서해 중부
+    top:30%;
+    left: 5%;
+}
+.class9, .class18{ // 제주해역
+    bottom:10%;
+    left: 15%;
+}
+
+@media (max-width: 1250px) {
+    /* … */
+  }
