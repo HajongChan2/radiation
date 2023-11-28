@@ -11,13 +11,13 @@ const io = require('socket.io')(http, {
 const mysql = require('mysql2');
 require('dotenv').config()
 
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
+    user: 'admin',
+    password: '12345678',
+    database: 'chat_db',
 });
 
 
