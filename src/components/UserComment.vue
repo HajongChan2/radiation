@@ -172,11 +172,12 @@ function uniqueId() {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .submit{
-  width: 5%;
+  width: 50px;
   height: 50px;
   background-image: url("/src/assets/arrow-line.png");
   background-repeat : no-repeat;
   background-position : center;
+  
 }
 .chating.active {
   opacity: 1;
