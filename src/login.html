@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>login</h2>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+<script>
+    function uniqueId() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
+    let messages = null;
+     function beforeMessages() {
+        
+      const socket = io('http://localhost:3000');
+
+      socket.on('before messages', (beforeMessages) => {
+        messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
+        console.log(messages);
+      });
+    }
+    beforeMessages();
+    
+</script>
+</html>

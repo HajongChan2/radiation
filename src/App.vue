@@ -86,7 +86,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
 
 body {
-  background-color: #e9e9e9 !important;
+  background: linear-gradient(to left, #c9d7ff, #f5f5f5) !important;
+  position: relative;
+}
+body::after{
+  content: "";
+  opacity: 0.5;
+  position: absolute;
 }
 
 * {
@@ -108,9 +114,10 @@ body {
 
 #container {
   margin: 0 auto;
-  padding-bottom: 150px;
+  padding: 0 10px 150px 10px;
   background-color: #fff;
   max-width: 1280px;
+  border-radius: 50px;
 }
 
 .content {

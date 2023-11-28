@@ -34,13 +34,11 @@ export default {
 
       this.socket.on('before messages', (beforeMessages) => {
         this.messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
-        console.log(this.messages);
       });
     },
     enterUsername() {
       if (this.usernameInput.trim() != '') {
         this.username = this.usernameInput;
-
         // 최초 한 번만 리스너 등록
         if (!this.chatMessageListener) {
           this.chatMessageListener = (data) => {

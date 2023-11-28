@@ -4,11 +4,12 @@
         <div class="update_font" v-show="time != undefined">{{ time }}</div>
         <div class="choice_box col-sm-12">
             <div v-if="Center.length === 0">데이터가 없습니다.</div>
-            
-            <div v-for="(item, index) in Center" :key="index" class="box col-sm-4">
-                <h2>{{ item.beachName }}</h2>
-                <img v-if="item.cesium == '안전'" src="../assets/safe.png" alt="" class="safe-img">
+            <div class="card col-4"  v-for="(item, index) in Center" :key="index">
                 <img :src="item.po" :alt="item.beachName" class="photo-img">
+                <div class="card-body content_card">
+                    <h5>{{ item.beachName }}</h5>
+                    <img v-if="item.cesium == '안전'" src="../assets/safe.png" alt="" class="safe-img">
+                </div>
             </div>
         </div>
         <div>
@@ -161,7 +162,7 @@
     display: block;
 }
 .photo-img{
-    width: 80%;
+    width: 90%;
     height: 65%;
 }
 .box > h2{
@@ -178,6 +179,12 @@
 .more-btn:hover{
     cursor: pointer;
 }
+.card{
+    padding: 10px 0;
+}
+.content_card{
+    text-align: center;
+}
 .safe-img{
     width:50px;
     height: 50px;
@@ -189,4 +196,7 @@
     border-radius: 50%;
     background-color: #0EC33B;
 }
+@media (max-width: 768px) {
+    
+  }
 </style>

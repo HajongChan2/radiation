@@ -3,28 +3,34 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: 'http://localhost:8080', // 클라이언트 주소
+        origin: '*', // 클라이언트 주소
         methods: ['GET', 'POST'],
     },
 });
 const mysql = require('mysql2');
 require('dotenv').config()
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    host: process.env.DB_HOST || 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
+    user: process.env.DB_USER || 'admin',
+    password: process.env.DB_PASSWORD || '12345678',
+    database: process.env.DB_NAME || 'chat_db',
 });
 
 app.use(express.static('public'));
-
+app.use((req, res, next) => {
+    console.log(`[${new Date()}] ${req.method} ${req.url}`);
+    next();
+});
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/src/main.js');
 });
-
+app.get('/login', (req, res) => {
+    const filePath = __dirname + '/login.html';
+    res.sendFile(filePath);
+});
 const users = {};
 let before_messages = {};
 
@@ -82,7 +88,9 @@ io.on('connection', (socket) => {
         );
     });
 });
-
-http.listen(PORT, () => {
+connection.on('error', (err) => {
+    console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
+});
+http.listen(PORT, '0.0.0.0', () => {
     console.log(`http://localhost:${PORT}`);
 });
