@@ -14,10 +14,10 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: process.env.DB_HOST || 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
+    user: process.env.DB_USER || 'admin',
+    password: process.env.DB_PASSWORD || '12345678',
+    database: process.env.DB_NAME || 'chat_db',
 });
 
 
