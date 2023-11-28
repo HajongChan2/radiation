@@ -1,22 +1,26 @@
-FROM node:18.18.0
+# 공식적인 Node.js 런타임을 부모 이미지로 사용
+FROM node:14
 
-# Dockerfile을 생성/관리하는 사람
-MAINTAINER Jaeha Ahn <gkwhdcks92@gmail.com>
-
-# /app 디렉토리 생성
-RUN mkdir -p /app
-# /app 디렉토리를 WORKDIR로 설정
+# 작업 디렉토리를 /app으로 설정
 WORKDIR /app
-# 현재 Dockerfile 있는 경로의 모든 파일을 /app에 복사
-COPY . /app
-# npm install을 실행
+
+# package.json 및 package-lock.json을 작업 디렉토리로 복사
+COPY package*.json ./
+
+# 어플리케이션 종속성 설치
 RUN npm install
 
-# 환경변수 NODE_ENV의 값을 development로 설정
-ENV NODE_ENV development
+# 어플리케이션 소스를 번들로 복사
+COPY . .
 
-# 가상 머신에 오픈할 포트
-EXPOSE 3000 80
+# 어플리케이션이 실행 중인 포트를 노출
+EXPOSE 3000
 
-# 컨테이너에서 실행될 명령을 지정
+# 데이터베이스 호스트에 대한 환경 변수 정의
+ENV DB_HOST your_database_host
+ENV DB_USER your_database_user
+ENV DB_PASSWORD your_database_password
+ENV DB_NAME your_database_name
+
+# 어플리케이션 시작
 CMD ["node", "src/server.js"]
