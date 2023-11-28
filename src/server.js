@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
     cors: {
@@ -13,19 +14,18 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
-    user: process.env.DB_USER || 'admin',
-    password: process.env.DB_PASSWORD || '12345678',
-    database: process.env.DB_NAME || 'chat_db',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
-app.use(express.static('public'));
-app.use((req, res, next) => {
-    console.log(`[${new Date()}] ${req.method} ${req.url}`);
-    next();
-});
+
+app.use(express.static('dist', { index: false, extensions: ['html'] }));
+
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/main.js');
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 app.get('/login', (req, res) => {
     const filePath = __dirname + '/login.html';
