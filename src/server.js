@@ -15,7 +15,7 @@ const PORT = 3000;
 
 const connection = mysql.createConnection({
     host: 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
-    user: 'admin',
+    user: 'user',
     password: '12345678',
     database: 'chat_db',
 });
@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
             console.error('MySQL 연결 오류:', err);
             return;
         }
-
+        
         // 서버 시작 시 실행할 초기화 쿼리
         connection.query('SELECT * FROM messages ORDER BY id DESC', (err, results) => {
             if (err) {
