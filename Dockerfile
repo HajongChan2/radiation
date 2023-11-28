@@ -17,10 +17,10 @@ COPY . .
 EXPOSE 3000
 
 # 데이터베이스 호스트에 대한 환경 변수 정의
-ENV DB_HOST your_database_host
-ENV DB_USER your_database_user
-ENV DB_PASSWORD your_database_password
-ENV DB_NAME your_database_name
+ENV DB_HOST chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com
+ENV DB_USER admin
+ENV DB_PASSWORD 12345678
+ENV DB_NAME chat_db
 
 # 어플리케이션 시작
 CMD ["node", "src/server.js"]
