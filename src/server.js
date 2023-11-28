@@ -91,4 +91,4 @@ io.on('connection', (socket) => {
 connection.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
-httpServer.listen(PORT, () => console.log(`app listening on port ${PORT}!`));
+http.listen(PORT, () => console.log(`app listening on port ${PORT}!`));
