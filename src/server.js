@@ -91,6 +91,6 @@ io.on('connection', (socket) => {
 connection.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
-http.listen(PORT, '0.0.0.0', () => {
+http.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
