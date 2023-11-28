@@ -11,13 +11,13 @@ const io = require('socket.io')(http, {
 const mysql = require('mysql2');
 require('dotenv').config()
 
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT;
 
 const connection = mysql.createConnection({
-    host: 'dpg-clitcvhe313s73aiipag-a',
-    user: 'admin',
-    password: 'p2ViSJgr2uXla49WdHVAKZuPFth9rXmj',
-    database: 'chat_db_i2ag',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 
@@ -91,6 +91,6 @@ io.on('connection', (socket) => {
 connection.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
-http.listen(PORT, () => {
+http.listen(PORT, '0.0.0.0', () => {
     console.log(`http://localhost:${PORT}`);
 });
