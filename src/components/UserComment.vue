@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     beforeMessages() {
-      this.socket = io('localhost:3000');
+      this.socket = io('http://localhost:3000');
 
       this.socket.on('before messages', (beforeMessages) => {
         this.messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
