@@ -21,7 +21,13 @@ const connection = mysql.createConnection({
     database: 'chat_db',
     port : 3306
 });
+io.on('connection', (socket) => {
+    console.log('A user connected');
 
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+    });
+});
 
 app.use(express.static('dist', { index: false, extensions: ['html'] }));
 
