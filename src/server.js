@@ -15,11 +15,11 @@ require('dotenv').config()
 const PORT = 3000;
 
 const connection = mysql.createConnection({
-    host: 'chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com',
-    user: 'user',
-    password: '12345678',
-    database: 'chat_db',
-    port : 3306
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port : process.env.DB_PORT,
 });
 io.on('connection', (socket) => {
     console.log('A user connected');

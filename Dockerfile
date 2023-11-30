@@ -21,6 +21,7 @@ ENV DB_HOST chatdb.can0b42urung.ap-northeast-2.rds.amazonaws.com
 ENV DB_USER user
 ENV DB_PASSWORD 12345678
 ENV DB_NAME chat_db
+ENV DB_PORT 3306
 
 # 어플리케이션 시작
 CMD ["node", "src/server.js"]
