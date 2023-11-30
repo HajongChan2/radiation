@@ -21,13 +21,6 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME,
     port : process.env.DB_PORT,
 });
-io.on('connection', (socket) => {
-    console.log('A user connected');
-
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
-    });
-});
 
 app.use(express.static('dist', { index: false, extensions: ['html'] }));
 
