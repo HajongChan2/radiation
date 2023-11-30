@@ -7,6 +7,7 @@ const io = require('socket.io')(http, {
         origin: '*', // 클라이언트 주소
         methods: ['GET', 'POST'],
     },
+    transports: ['websocket', 'polling'],
 });
 const mysql = require('mysql2');
 require('dotenv').config()
@@ -92,4 +93,4 @@ io.on('connection', (socket) => {
 connection.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
-http.listen(PORT, () => console.log(`app listening on port ${PORT}!`));
+http.listen(PORT,'0.0.0.0', () => console.log(`app listening on port ${PORT}!`));
