@@ -24,4 +24,4 @@ ENV DB_NAME chat_db
 ENV DB_PORT 3306
 
 # 어플리케이션 시작
-CMD ["node", "server.js"]
+CMD ["node ", "src/server.js"]
