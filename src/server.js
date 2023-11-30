@@ -18,6 +18,7 @@ const connection = mysql.createConnection({
     user: 'user',
     password: '12345678',
     database: 'chat_db',
+    port : 3306
 });
 
 
