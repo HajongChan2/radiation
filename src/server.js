@@ -7,20 +7,19 @@ const io = require('socket.io')(http, {
         origin: '*', // 클라이언트 주소
         methods: ['GET', 'POST'],
     },
-    transports: ['websocket', 'polling'],
 });
 const mysql = require('mysql2');
 require('dotenv').config()
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port : process.env.DB_PORT,
 });
+
 
 app.use(express.static('dist', { index: false, extensions: ['html'] }));
 
@@ -44,7 +43,7 @@ io.on('connection', (socket) => {
             console.error('MySQL 연결 오류:', err);
             return;
         }
-        
+
         // 서버 시작 시 실행할 초기화 쿼리
         connection.query('SELECT * FROM messages ORDER BY id DESC', (err, results) => {
             if (err) {
@@ -83,7 +82,7 @@ io.on('connection', (socket) => {
                 if (err) {
                     console.error('Error saving message to database:', err);
                 } else {
-                    console.log(results);
+
                 }
             }
         );
@@ -92,4 +91,6 @@ io.on('connection', (socket) => {
 connection.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
-http.listen(PORT,'0.0.0.0', () => console.log(`app listening on port ${PORT}!`));
+http.listen(PORT, '0.0.0.0', () => {
+    console.log(`http://localhost:${PORT}`);
+});
