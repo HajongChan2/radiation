@@ -88,7 +88,7 @@ io.on('connection', (socket) => {
         );
     });
 });
-connection.on('error', (err) => {
+io.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
 http.listen(PORT, () => {
