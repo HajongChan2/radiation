@@ -37,7 +37,7 @@ let before_messages = {};
 
 
 io.on('connection', (socket) => {
-    // 새로운 사용자가 서버에 연결되었을 때
+    console.log('클라이언트가 소켓에 연결되었습니다.');
     connection.connect((err) => {
         if (err) {
             console.error('MySQL 연결 오류:', err);
