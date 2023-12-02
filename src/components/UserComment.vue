@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     beforeMessages() {
-      this.socket = io('https://port-0-radiation-32updzt2alpie8v5q.sel5.cloudtype.app/:3000');
+      this.socket = io('https://port-0-radiation-32updzt2alpie8v5q.sel5.cloudtype.app/');
 
       this.socket.on('before messages', (beforeMessages) => {
         this.messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
