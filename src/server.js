@@ -21,7 +21,8 @@ const connection = mysql.createConnection({
 });
 
 
-app.use(express.static('dist', { index: false, extensions: ['html'] }));
+app.use(express.static('dist', { index: false, extensions: ['html', 'js'], 'Content-Type': 'application/javascript' }));
+
 
 
 app.get('/', (req, res) => {
