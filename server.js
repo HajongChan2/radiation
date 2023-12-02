@@ -8,7 +8,6 @@ const io = require('socket.io')(http, {
         methods: ['GET', 'POST'],
     },
 });
-const cors = require('cors');
 const mysql = require('mysql2');
 require('dotenv').config()
 
@@ -21,7 +20,6 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME,
 });
 
-app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 
