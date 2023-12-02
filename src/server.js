@@ -26,7 +26,7 @@ app.use(express.static('dist', { index: false, extensions: ['html', 'js'], 'Cont
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 app.get('/login', (req, res) => {
     const filePath = __dirname + '/login.html';
