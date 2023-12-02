@@ -22,7 +22,7 @@ const connection = mysql.createConnection({
 
 
 app.use(express.static('dist', { index: false, extensions: ['html', 'js'], 'Content-Type': 'application/javascript' }));
-
+app.use(express.static(path.join(__dirname, 'dist')));
 
 
 app.get('/', (req, res) => {
