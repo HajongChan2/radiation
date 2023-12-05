@@ -131,6 +131,12 @@ h1 {
     }
 }
 @media (max-width: 486px) {
+    .class1,
+    .class10 {
+        // 남해 동부
+        bottom: 40%;
+        right: 10%;
+    }
     .class2,
     .class11 {
         // 남해 서부

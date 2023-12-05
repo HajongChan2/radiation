@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
                 if (err) {
                     console.error('Error saving message to database:', err);
                 } else {
-
+                    io.emit('chat message', { username: users[socket.id], message: data.message });
                 }
             }
         );
