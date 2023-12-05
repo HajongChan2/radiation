@@ -18,6 +18,7 @@
 .footer_font{
     display: flex;
     margin-top:50px;
+    flex-direction: column;
 }
 .footer_font > li, .copyright > li{
     font-size: 0.7em;
