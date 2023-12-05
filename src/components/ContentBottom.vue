@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.bottom" class="col-sm-8">
+    <div :class="$style.bottom" class="col-10">
         <div :class="$style.content">
             <div :class="$style.circle"></div>
             <p :class="$style.font">세슘 : 0.1Bq/L 이하</p>

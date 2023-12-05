@@ -34,3 +34,15 @@
     margin:0;
     font-size: 0.9em;
 }
+@media (max-width: 850px){
+    .font{
+        margin:0;
+        font-size: 0.8em;
+    }
+}
+@media (max-width: 486px){
+    .font{
+        margin:0;
+        font-size: 0.7em;
+    }
+}
