@@ -60,7 +60,6 @@ io.on('connection', (socket) => {
     socket.on('new user', (username) => {
         users[socket.id] = username;
         console.log(username + ' 사용자가 연결되었습니다.');
-
     });
 
 
@@ -71,9 +70,6 @@ io.on('connection', (socket) => {
 
     // 클라이언트에서 보낸 채팅 메시지 수신
     socket.on('chat message', (data) => {
-        // 서버에서는 간단히 메시지를 클라이언트로 다시 전송
-        io.emit('chat message', { username: users[socket.id], message: data.message });
-
         // 채팅 기록을 MariaDB에 저장
         connection.execute(
             'INSERT INTO messages (username, message) VALUES (?, ?)',
@@ -82,7 +78,7 @@ io.on('connection', (socket) => {
                 if (err) {
                     console.error('Error saving message to database:', err);
                 } else {
-                    
+                    io.emit('chat message', { username: users[socket.id], message: data.message });
                 }
             }
         );
@@ -92,5 +88,5 @@ io.on('error', (err) => {
     console.error(`[${new Date()}] [MySQL] Connection error: ${err.message}`);
 });
 http.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
+    console.log(`${PORT}`);
 });
