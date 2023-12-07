@@ -16,13 +16,5 @@ COPY . .
 # 어플리케이션이 실행 중인 포트를 노출
 EXPOSE 3000
 
-# 데이터베이스 호스트에 대한 환경 변수 정의
-ENV PORT='3000'
-ENV DB_HOST='chat-db.cjkmu9g6ip3w.ap-southeast-2.rds.amazonaws.com'
-ENV DB_USER='user'
-ENV DB_PASSWORD='12345678'
-ENV DB_NAME='chat_db'
-ENV DB_PORT='3306'
-
 # 어플리케이션 시작
-CMD ["node", "src/server.js"]
+CMD ["node", "server.js"]
