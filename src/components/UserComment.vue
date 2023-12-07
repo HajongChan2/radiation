@@ -30,11 +30,9 @@ export default {
   },
   methods: {
     beforeMessages() {
-      this.socket = io('https://port-0-radiation-32updzt2alpie8v5q.sel5.cloudtype.app');
-
+      this.socket = io('https://port-0-radiation-32updzt2alpie8v5q.sel5.cloudtype.app/');
       this.socket.on('before messages', (beforeMessages) => {
         this.messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
-        console.log(this.messages)
       });
     },
     enterUsername() {
@@ -46,7 +44,6 @@ export default {
             this.messages.unshift({ ...data, active: true, id: uniqueId() });
             this.msgBottom();
           };
-
           this.socket.on('chat message', this.chatMessageListener);
         }
         this.socket.emit('new user', this.username);
@@ -63,7 +60,6 @@ export default {
       } else if (this.messageInput.trim() == '') {
         alert("내용을 입력해주세요.");
       }
-
     },
     msgBottom() {
       let div = document.getElementById("chat-messages");
@@ -71,10 +67,9 @@ export default {
     },
   },
   mounted() {
-    this.beforeMessages;
+    this.beforeMessages();
   }
 };
-
 function uniqueId() {
   return '_' + Math.random().toString(36).substr(2, 9);
 }
