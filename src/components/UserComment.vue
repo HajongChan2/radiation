@@ -34,6 +34,7 @@ export default {
 
       this.socket.on('before messages', (beforeMessages) => {
         this.messages = beforeMessages.map((message) => ({ ...message, active: true, id: uniqueId() }));
+        console.log(this.messages)
       });
     },
     enterUsername() {
@@ -70,7 +71,7 @@ export default {
     },
   },
   mounted() {
-    this.beforeMessages();
+    this.beforeMessages;
   }
 };
 
