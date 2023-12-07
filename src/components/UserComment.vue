@@ -3,14 +3,17 @@
     <h2 class="header">실시간 댓글</h2>
     <div class="col-12 chat_container">
       <TransitionGroup name="list" id="chat-messages" tag="ul">
-        <li v-for="message in messages" :key="message.id" class="col-12 chating" :class="{ 'active': message.active }">
+        <li v-for="message in messages.slice().reverse()" :key="message.id" class="col-12 chating"
+          :class="{ 'active': message.active }">
           <strong>{{ message.username }}:</strong> {{ message.message }}
         </li>
       </TransitionGroup>
     </div>
     <form @submit.prevent="enterUsername" class="input_form">
-      <input v-model="usernameInput" type="text" autocomplete="off" class="form-control" id="user_name" placeholder="Username" aria-label="Username">
-      <input v-model="messageInput" type="text" id="user_message" autocomplete="off" class="form-control" placeholder="Usermessage" aria-label="Usermessage">
+      <input v-model="usernameInput" type="text" autocomplete="off" class="form-control" id="user_name"
+        placeholder="Username" aria-label="Username">
+      <input v-model="messageInput" type="text" id="user_message" autocomplete="off" class="form-control"
+        placeholder="Usermessage" aria-label="Usermessage">
       <button class="btn btn-primary submit" type="submit"></button>
     </form>
   </div>
@@ -38,7 +41,7 @@ export default {
     enterUsername() {
       if (this.usernameInput.trim() != '') {
         this.username = this.usernameInput;
-        // 최초 한 번만 리스너 등록
+
         if (!this.chatMessageListener) {
           this.chatMessageListener = (data) => {
             this.messages.unshift({ ...data, active: true, id: uniqueId() });
@@ -93,9 +96,11 @@ function uniqueId() {
 .list-leave-active {
   position: absolute;
 }
-.container{
+
+.container {
   margin-top: 100px;
 }
+
 .header {
   text-align: center;
   margin-bottom: 30px;
@@ -133,6 +138,7 @@ function uniqueId() {
   height: 250px;
   transition: transform 0.3s ease-in-out;
 }
+
 .chat_container:before {
   content: "";
   position: absolute;
@@ -143,40 +149,46 @@ function uniqueId() {
   right: 0;
   bottom: 0;
   background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-  z-index: 1; /* 내용 위에 적용되도록 */
+  z-index: 1;
+  /* 내용 위에 적용되도록 */
 }
+
 #chat-messages li {
   margin-bottom: 5px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.input_form{
+
+.input_form {
   display: flex;
 
 }
 
-#user_name{
+#user_name {
   width: 20%;
 }
-#user_message{
+
+#user_message {
   width: 75%;
 }
+
 .chating {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
-.submit{
+
+.submit {
   width: 50px;
   height: 50px;
   background-image: url("/src/assets/arrow-line.png");
-  background-repeat : no-repeat;
-  background-position : center;
-  
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
+
 .chating.active {
   opacity: 1;
   transform: translateY(0);
-}
-</style>
+}</style>
