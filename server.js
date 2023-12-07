@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
         }
 
         // 서버 시작 시 실행할 초기화 쿼리
-        connection.query('SELECT * FROM messages ORDER BY num DESC', (err, results) => {
+        connection.query('SELECT * FROM messages', (err, results) => {
             if (err) {
                 console.error('SELECT 쿼리 실행 중 오류:', err);
             } else {
