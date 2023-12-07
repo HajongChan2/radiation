@@ -49,10 +49,8 @@ io.on('connection', (socket) => {
             if (err) {
                 console.error('SELECT 쿼리 실행 중 오류:', err);
             } else {
-                // SELECT 쿼리 결과를 처리합니다.
-                console.log('서버 시작 시 초기화 쿼리 결과:', results);
+                // 쿼리 결과를 before_messages에 저장 후 새로운 사용자에게 이전 메시지를 전송
                 before_messages = results;
-                // 새로운 사용자에게 이전 메시지를 전송합니다.
                 socket.emit('before messages', before_messages);
             }
         });
@@ -78,6 +76,7 @@ io.on('connection', (socket) => {
                 if (err) {
                     console.error('Error saving message to database:', err);
                 } else {
+                    console.log(username + ' 사용자가 채팅을 시작');
                     io.emit('chat message', { username: users[socket.id], message: data.message });
                 }
             }
