@@ -3,7 +3,7 @@
     <h2 class="header">실시간 댓글</h2>
     <div class="col-12 chat_container">
       <TransitionGroup name="list" id="chat-messages" tag="ul">
-        <li v-for="message in messages.slice().reverse()" :key="message.id" class="col-12 chating"
+        <li v-for="message in messages" :key="message.id" class="col-12 chating"
           :class="{ 'active': message.active }">
           <strong>{{ message.username }}:</strong> {{ message.message }}
         </li>
