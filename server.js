@@ -76,7 +76,7 @@ io.on('connection', (socket) => {
                 if (err) {
                     console.error('Error saving message to database:', err);
                 } else {
-                    console.log(username + ' 사용자가 채팅을 시작');
+                    console.log(users[socket.id] + ' 사용자가 채팅을 시작');
                     io.emit('chat message', { username: users[socket.id], message: data.message });
                 }
             }
